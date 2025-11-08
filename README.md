@@ -1,2 +1,2 @@
 # Bitrix-Automation-Showcase
-Open-source version
+Open-source versions
