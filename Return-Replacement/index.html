@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate index.php</title>
+    <script src="https://api.bitrix24.com/api/v1/"></script> <!-- Include Bitrix24 API -->
+    <script>
+        // Variable to store the current deal ID
+        let dealId = null;
+
+        // Initialize Bitrix24 API and retrieve the current deal ID
+        BX24.init(function() {
+            BX24.callMethod(
+                'crm.deal.get',
+                { id: BX24.placement.info().options.ID },
+                function(result) {
+                    if (result.error()) {
+                        console.error(result.error());
+                        alert("Error retrieving deal ID");
+                    } else {
+                        dealId = result.data().ID;
+                        console.log("Current deal ID:", dealId);
+
+                        // Set the deal ID value inside the hidden form field
+                        document.getElementById("dealIdInput").value = dealId;
+                    }
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+<h1>Application Loaded</h1>
+<p>Click the button below to activate <strong>index.php</strong> for the current deal:</p>
+
+<!-- Form to send data to index.php -->
+<form action="index.php" method="post">
+    <!-- Hidden field to pass the deal ID -->
+    <input type="hidden" id="dealIdInput" name="dealId" value="">
+    <!-- Hidden action field to trigger the logic in index.php -->
+    <input type="hidden" name="action" value="activate">
+    <!-- Submit button -->
+    <button type="submit">Activate index.php</button>
+</form>
+</body>
+</html>
