@@ -1,7 +1,7 @@
 <?php
 
 // Define the log file path
-$responseFile = '/home/bitrix/www/local/response.txt';
+$responseFile = '/path/response.txt';
 
 // Function to write messages to the log file
 function logResponse($message)
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     logResponse("Deal processing activated for ID: $dealId");
 
     // Set the webhook URL
-    $webhookUrl = 'https://dd-familycrm.kz/rest/1/gveorm3pbcsyg539/';
+    $webhookUrl = 'https://yourBitrix24.kz/rest/1/yourwebhook/';
 
     try {
         // Create class instances
