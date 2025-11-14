@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Адрес REST вебхука
-$webhookUrl = 'https://crm.grohe.kz/rest/1/5pdvtl273a38pl7i/';
+$webhookUrl = 'https://crm.grohe.kz/rest/1/webhook/';
 
 // Функция для вызова методов Bitrix через REST
 function callBitrixMethod($method, $params = array())
